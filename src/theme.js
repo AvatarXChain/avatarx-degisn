@@ -22,7 +22,7 @@ export const brand = {
   success: '#8BC34A',
   danger: '#F44336',
   warning: '#FF9800',
-  help: '#B921F3',
+  help: '#B921F3'
 }
 
 export const colors = {
@@ -60,7 +60,8 @@ addAliases(mediaQueries, aliases)
 export const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
 
 const emoji = '"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"'
-export const font = `Averta,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif,${emoji}`
+export const font = `Helvetica Neue,Arial,Microsoft YaHei,sans-serif,${emoji}`
+// export const font = `Averta,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif,${emoji}`
 export const mono = 'SFMono-Regular,"Roboto Mono",Menlo,monospace'
 
 export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 72, 96]

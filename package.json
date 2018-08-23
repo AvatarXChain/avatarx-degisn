@@ -16,6 +16,7 @@
   "author": "Max Yu",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.6",
     "lodash": "^4.17.10",
     "palx": "1.0.2",
     "prop-types": "^15.6.1",

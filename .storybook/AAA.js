@@ -18,11 +18,10 @@ const Flag = Link.extend`
 
 storiesOf('👋 Welcome!', module).add('About the project', () => (
   <Fragment>
-    <Flag href="https://hackclub.com" />
+    <Flag href="https://avatarx.io" />
     <Heading.h1 f={5}>Welcome!</Heading.h1>
     <Text f={3} my={2}>
-      This is{' '}
-      <Link href="https://hackclub.com" underline children="Hack Club" />
+      This is <Link href="https://avatarx.io" underline children="Hack Club" />
       ’s Design System.
     </Text>
     <Text>It’s a collection of React components designed to:</Text>
@@ -45,23 +44,14 @@ storiesOf('👋 Welcome!', module).add('About the project', () => (
       </Item>
     </List>
     <Code bg="snow" p={3} my={3}>
-      yarn add @hackclub/design-system
+      yarn add @avatarx/design-system
     </Code>
     <Flex align="center" wrap>
       <Button
-        href="https://github.com/hackclub/design-system"
+        href="https://github.com/AvatarXChain/avatarx-degisn"
         mr={2}
         children="GitHub"
       />
-      <Button
-        href="https://www.npmjs.com/package/@hackclub/design-system"
-        inverted
-        children="npm"
-      />
-    </Flex>
-    <Flex align="center" mt={4}>
-      <Avatar src="https://hackclub.com/team/lachlan.jpg" size={48} mr={2} />
-      <Text>- @lachlanjc</Text>
     </Flex>
   </Fragment>
 ))

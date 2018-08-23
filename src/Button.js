@@ -1,9 +1,11 @@
+import React from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import Box from './Box'
+import Icon from './Icon'
 import theme, { cx, hexa } from './theme'
 
-const Button = Box.withComponent('a').extend`
+const Base = Box.withComponent('a').extend`
   -webkit-font-smoothing: antialiased;
   display: inline-block;
   vertical-align: middle;
@@ -11,12 +13,13 @@ const Button = Box.withComponent('a').extend`
   text-decoration: none;
   font-family: inherit;
   font-weight: ${props => props.theme.regular};
-  line-height: 1.125;
+  line-height: 1;
   appearance: none;
   cursor: pointer;
   transition: ${props => props.theme.transition} box-shadow;
   border-width: 0;
   border-style: solid;
+  user-select: none;
 
   ${props =>
     props.inverted && {
@@ -69,6 +72,16 @@ const Button = Box.withComponent('a').extend`
     `};
 `
 
+const Button = ({ type, ...props }) => {
+  const { children } = props
+  const iconType = props.loading ? 'loading' : props.icon
+  const iconNode = iconType ? <Icon type={iconType} /> : null
+
+  return (
+    <Base {...props}>{iconNode}{children}</Base>
+  )
+}
+
 Button.displayName = 'Button'
 
 Button.propTypes = {
@@ -79,7 +92,8 @@ Button.propTypes = {
   /** add left text arrows */
   chevronLeft: PropTypes.bool,
   /** add right text arrows */
-  chevronRight: PropTypes.bool
+  chevronRight: PropTypes.bool,
+  icon: PropTypes.string
 }
 Button.defaultProps = {
   theme,
@@ -91,7 +105,7 @@ Button.defaultProps = {
   py: 2
 }
 
-Button.button = Button.withComponent('button')
-Button.input = Button.withComponent('input')
+Button.button = Base.withComponent('button')
+Button.input = Base.withComponent('input')
 
 export default Button
