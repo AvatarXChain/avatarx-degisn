@@ -1,4 +1,5 @@
 import palx from 'palx'
+import createTheme from 'styled-components-theme'
 import { includes, get, omit } from 'lodash'
 import { removeProps } from 'styled-system'
 
@@ -16,11 +17,12 @@ export const grays = {
 
 export const brand = {
   primary: blue,
+  normal: '#F7F7F7',
   drop: '#F5574C',
   rise: '#2ABD73',
   text: '#949494',
-  success: '#8BC34A',
-  danger: '#F44336',
+  success: '#2ABD73',
+  danger: '#F5574C',
   warning: '#FF9800',
   help: '#B921F3'
 }
@@ -80,7 +82,7 @@ export const pill = '9999px'
 export const radii = ['0px', '4px', '8px', '16px', pill]
 export const radius = '4px'
 
-export const shadowColor = 'rgba(0,0,0,0.16)'
+export const shadowColor = 'rgba(0,0,0,0.1)'
 export const baseShadow = '0 0 2px 0 rgba(0,0,0,.08),'
 export const boxShadows = [
   baseShadow + `0 2px 4px 0 ${shadowColor}`,

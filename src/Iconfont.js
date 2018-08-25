@@ -15,59 +15,24 @@ const iconFont = css`
   -moz-osx-font-smoothing: grayscale;
 `
 const fontsCSS = css`
-  // @font-face {
-  //   font-family: 'anticon';
-  //   font-display: fallback;
-  //   src: url('${iconURL}.eot');
-  //   src:
-  //     url('${iconURL}.woff') format('woff'),
-  //     url('${iconURL}.ttf') format('truetype'),
-  //     url('${iconURL}.svg#iconfont') format('svg');
-  // }
-
   @font-face {
-    font-family: 'iconfont';
-    src: url('//at.alicdn.com/t/font_689503_6cyo5ycekbe.eot');
-    src: url('//at.alicdn.com/t/font_689503_6cyo5ycekbe.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_689503_6cyo5ycekbe.woff') format('woff'),
-    url('//at.alicdn.com/t/font_689503_6cyo5ycekbe.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_689503_6cyo5ycekbe.svg#iconfont') format('svg');
+    font-family: 'anticon';
+    font-display: fallback;
+    src: url('${iconURL}.eot');
+    src:
+      url('${iconURL}.woff') format('woff'),
+      url('${iconURL}.ttf') format('truetype'),
+      url('${iconURL}.svg#iconfont') format('svg');
   }
 
-  .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 16px;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .icon {
+    ${iconFont};
+
+    &:before {
+      display: block;
+      font-family: "anticon" !important;
+    }
   }
-
-  .icon-github:before { content: "\e874"; }
-
-  .icon-message:before { content: "\e668"; }
-
-  .icon-network:before { content: "\e700"; }
-
-  .icon-mix:before { content: "\e623"; }
-
-  .icon-develop:before { content: "\e679"; }
-
-  .icon-custom:before { content: "\e609"; }
-
-  .icon-ai:before { content: "\e6c5"; }
-
-  .icon-wallet:before { content: "\e600"; }
-
-  .icon-data:before { content: "\e63a"; }
-
-  // .icon {
-  //   ${iconFont};
-
-  //   &:before {
-  //     display: block;
-  //     font-family: "anticon" !important;
-  //   }
-  // }
 
   .${iconPrefix}-step-forward:before { content: "\e600"; }
   .${iconPrefix}-step-backward:before { content: "\e601"; }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PureComponent } from 'react'
 import styled, { css } from 'styled-components'
 import PropTypes from 'prop-types'
 import Box from './Box'
@@ -17,44 +17,79 @@ const Base = Box.withComponent('a').extend`
   appearance: none;
   cursor: pointer;
   transition: ${props => props.theme.transition} box-shadow;
-  border-width: 0;
+  border-width: 1px;
   border-style: solid;
+  border-color: ${props => cx(props.bg)};
   user-select: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
   ${props =>
-    props.inverted && {
-      backgroundColor: cx(props.color),
+    props.ghost && {
+      background: 'none',
+      borderColor: cx(props.bg),
+      borderWidth: '1px',
+      borderStyle: 'solid',
       color: cx(props.bg)
-    }};
-
-  &:hover, &:focus {
-    outline: 0;
-    box-shadow: 0 2px 6px ${props =>
-      props.inverted ? props.theme.shadowColor : hexa(props.bg, 0.25)};
+    }
   }
 
+  ${props =>
+    props.text && {
+      background: 'none',
+      border: 'none',
+      color: cx(props.bg)
+    }
+  }
+
+  ${props =>
+    props.bg === 'normal' && {
+      color: '#3D3D3D'
+    }
+  }
+
+  &:hover,
+  &:focus,
   &:active {
     outline: 0;
-    box-shadow: 0 2px 8px 2px ${props =>
-      props.inverted ? props.theme.shadowColor : hexa(props.bg, 0.25)};
   }
 
-  ${props => props.disabled && { opacity: 0.25, cursor: 'not-allowed' }};
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
 
-  ${props =>
-    props.scale &&
-    css`
-      transition: ${props => props.theme.transition} all;
-      will-change: transform;
-      transform: scale(1);
-      &:hover,
-      &:focus {
-        transform: scale(${props => props.theme.scaleFactor});
-      }
-      ${props => props.theme.mediaQueries.reduceMotion} {
-        transform: none !important;
-      }
+  &:hover {
+    ${props => !props.text && !props.ghost && css`
+      background-color: ${hexa(props.bg, .85)};
+      box-shadow: 0 2px 6px ${hexa(props.bg, .25)};
     `};
+
+    ${props => props.ghost && css`
+      background-color: ${hexa(props.bg, .05)};
+      color: ${hexa(props.bg, .85)};
+    `};
+
+    ${props => props.text && css`
+    `};
+  }
+
+  &:focus, &:active {
+    box-shadow: 0 0 0 0.03rem ${props => props.bg === 'normal' ?
+      hexa(props.theme.snow, .25) :
+      hexa(props.bg, .25)
+    };
+
+    ${props => !props.text && !props.ghost && css`
+      background-color: ${props => hexa(props.bg, .85)};
+    `};
+
+    ${props => props.ghost && css`
+      border-color: ${hexa(props.bg, 0.85)};
+      background: none;
+    `};
+  }
+
+  ${props => props.disabled && { opacity: 0.5, cursor: 'not-allowed' }};
 
   ${props =>
     props.chevronLeft &&
@@ -78,21 +113,24 @@ const Button = ({ type, ...props }) => {
   const iconNode = iconType ? <Icon type={iconType} /> : null
 
   return (
-    <Base {...props}>{iconNode}{children}</Base>
+    <Base {...props}>
+      {iconNode}
+      {children}
+    </Base>
   )
 }
 
 Button.displayName = 'Button'
 
 Button.propTypes = {
-  /** flip colors */
-  inverted: PropTypes.bool,
-  /** add hover/focus animation */
-  scale: PropTypes.bool,
-  /** add left text arrows */
+  /* add left text arrows */
   chevronLeft: PropTypes.bool,
-  /** add right text arrows */
+  /* add right text arrows */
   chevronRight: PropTypes.bool,
+  ghost: PropTypes.bool,
+  /* only with text */
+  text: PropTypes.bool,
+  /* with icon */
   icon: PropTypes.string
 }
 Button.defaultProps = {
@@ -101,8 +139,8 @@ Button.defaultProps = {
   color: 'white',
   f: 1,
   m: 0,
-  px: 3,
-  py: 2
+  px: 4,
+  py: '12px'
 }
 
 Button.button = Base.withComponent('button')

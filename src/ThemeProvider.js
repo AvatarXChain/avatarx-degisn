@@ -48,6 +48,16 @@ a {
 textarea {
   resize: none;
 }
+
+* {
+  transition:
+    background-color .25s linear,
+    border-color .25s linear,
+    color .05s linear,
+    opacity .25s linear,
+    filter .25s linear,
+    visibility .25s linear;
+}
 `
 
 const ThemeProvider = ({ theme, webfonts, ...props }) => {

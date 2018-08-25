@@ -19,7 +19,10 @@ storiesOf('Button', module)
     })(() => (
       <Flex wrap>
         <Box w={1}>
-          <Button mr={10}>Button</Button>
+          <Button bg="normal" mr={10}>
+            Normal
+          </Button>
+          <Button mr={10}>Primary</Button>
           <Button bg="success" mr={10}>
             Success
           </Button>
@@ -34,7 +37,12 @@ storiesOf('Button', module)
           </Button>
         </Box>
         <Box w={1} mt={20}>
-          <Button mr={10}>默认</Button>
+          <Button bg="normal" mr={10}>
+            默认
+          </Button>
+          <Button bg="primary" mr={10}>
+            品牌
+          </Button>
           <Button bg="success" mr={10}>
             成功
           </Button>
@@ -48,18 +56,28 @@ storiesOf('Button', module)
             帮助
           </Button>
         </Box>
+      </Flex>
+    ))
+  )
+  .add(
+    'Type',
+    withInfo({
+      inline: true,
+      text: 'Different type of Button component.'
+    })(() => (
+      <Flex wrap>
         <Box w={1} mt={20}>
-          <Button bg="success" inverted mr={10}>
-            Success
+          <Button mr={10}>
+            Primary Button
           </Button>
-          <Button bg="danger" inverted mr={10}>
-            Danger
+          <Button bg="success" ghost mr={10}>
+            Ghost Button
           </Button>
-          <Button bg="warning" inverted mr={10}>
-            Warning
+          <Button bg="normal" text mr={10}>
+            Text Button
           </Button>
-          <Button bg="help" inverted mr={10}>
-            Help
+          <Button bg="danger" text mr={10}>
+            Text Button
           </Button>
         </Box>
       </Flex>
@@ -97,7 +115,7 @@ storiesOf('Button', module)
       text: 'Different width of buttons.'
     })(() => (
       <Flex flex="column">
-        <Button w={1}>Full Width</Button>
+        <Button w={1} mr={10}>Full Width</Button>
         <Button bg="warning" w={250}>
           Full Width
         </Button>
@@ -129,17 +147,22 @@ storiesOf('Button', module)
       </Flex>
     ))
   )
-  .add('Scale', () => <Button scale>Scale</Button>)
-  .add('Icon', () => (
-    <Flex wrap>
-      <Button mr={10} icon="github">
-        Back
-      </Button>
-      <Button bg="danger" mr={10}>
-        哈哈
-      </Button>
-      <Button bg="success" chevronRight>
-        Forward
-      </Button>
-    </Flex>
-  ))
+  .add(
+    'Icon',
+    withInfo({
+      inline: true,
+      text: 'Button component with icon.'
+    })(() => (
+      <Flex wrap>
+        <Button mr={10} icon="search">
+          Back
+        </Button>
+        <Button bg="danger" mr={10}>
+          哈哈
+        </Button>
+        <Button bg="success" chevronRight>
+          Forward
+        </Button>
+      </Flex>
+    ))
+  )
